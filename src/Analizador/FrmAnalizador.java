@@ -37,18 +37,11 @@ public class FrmAnalizador extends javax.swing.JFrame {
         BotonSintactico = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAnalizarLex = new javax.swing.JTextArea();
-        btnArchivo = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAnalizarSin = new javax.swing.JTextArea();
         Borrar1 = new javax.swing.JButton();
         Borrar2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jBIntermedio = new javax.swing.JButton();
-        jBAssembler = new javax.swing.JButton();
-        jBObjeto = new javax.swing.JButton();
-        jBEjecutable = new javax.swing.JButton();
-        jBEjecutar = new javax.swing.JButton();
-        jBSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,14 +70,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
         txtAnalizarLex.setRows(5);
         jScrollPane2.setViewportView(txtAnalizarLex);
 
-        btnArchivo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnArchivo.setText("Abrir Fuente");
-        btnArchivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArchivoActionPerformed(evt);
-            }
-        });
-
         txtAnalizarSin.setColumns(20);
         txtAnalizarSin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtAnalizarSin.setRows(5);
@@ -106,137 +91,63 @@ public class FrmAnalizador extends javax.swing.JFrame {
             }
         });
 
-        jBIntermedio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBIntermedio.setText("Intermedio");
-        jBIntermedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBIntermedioActionPerformed(evt);
-            }
-        });
-
-        jBAssembler.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBAssembler.setText("Assembler");
-        jBAssembler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAssemblerActionPerformed(evt);
-            }
-        });
-
-        jBObjeto.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBObjeto.setText("Objeto");
-        jBObjeto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBObjetoActionPerformed(evt);
-            }
-        });
-
-        jBEjecutable.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBEjecutable.setText("Ejecutable");
-        jBEjecutable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEjecutableActionPerformed(evt);
-            }
-        });
-
-        jBEjecutar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBEjecutar.setText("Ejecutar");
-        jBEjecutar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEjecutarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBIntermedio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBAssembler)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBObjeto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBEjecutable)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBEjecutar)
-                .addGap(191, 191, 191))
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBEjecutable)
-                    .addComponent(jBEjecutar)
-                    .addComponent(jBObjeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBAssembler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBIntermedio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 49, Short.MAX_VALUE)
         );
-
-        jBSave.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jBSave.setText("Guardar");
-        jBSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSaveActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnArchivo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BotonAnalisis)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(59, 59, 59)
-                                .addComponent(BotonSintactico)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Borrar2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                .addGap(45, 45, 45)
+                                .addComponent(BotonAnalisis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(47, 47, 47)
+                                .addComponent(Borrar1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .addGap(53, 53, 53)
+                                .addComponent(BotonSintactico, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(Borrar2, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(391, 391, 391)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonSintactico, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Borrar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonAnalisis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Borrar1))
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotonSintactico, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Borrar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonAnalisis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Borrar1))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -520,32 +431,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
         txtAnalizarSin.setText(null);
     }//GEN-LAST:event_Borrar2ActionPerformed
 
-    private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
-        JFileChooser directory = new JFileChooser();
-        directory.setCurrentDirectory(new File("."));
-        directory.setDialogTitle("DIRECTORIO");
-        directory.setAcceptAllFileFilterUsed(false);
-
-        if (directory.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            try {
-
-                File arc = new File(directory.getSelectedFile().getAbsolutePath());
-                String ST = new String(Files.readAllBytes(arc.toPath()));
-                Resultado.setText(ST);
-            } catch (FileNotFoundException ex) {
-                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            script.setPath(null);
-        }
-
-
-    }//GEN-LAST:event_btnArchivoActionPerformed
-
     private void BotonSintacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSintacticoActionPerformed
         String ST = Resultado.getText();
         Sintaxis s = new Sintaxis(new Analizador.LexicoCup(new StringReader(ST)));
@@ -564,47 +449,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
     private void Borrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar1ActionPerformed
         txtAnalizarLex.setText(null);
     }//GEN-LAST:event_Borrar1ActionPerformed
-
-    private void jBIntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIntermedioActionPerformed
-        script.intermedio();
-    }//GEN-LAST:event_jBIntermedioActionPerformed
-
-    private void jBAssemblerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAssemblerActionPerformed
-        script.assambler();
-    }//GEN-LAST:event_jBAssemblerActionPerformed
-
-    private void jBObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBObjetoActionPerformed
-        script.objeto();
-    }//GEN-LAST:event_jBObjetoActionPerformed
-
-    private void jBEjecutableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEjecutableActionPerformed
-        script.ejecutable();
-    }//GEN-LAST:event_jBEjecutableActionPerformed
-
-    private void jBEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEjecutarActionPerformed
-        script.start();
-    }//GEN-LAST:event_jBEjecutarActionPerformed
-
-    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        try {
-
-            JFileChooser escoger = new JFileChooser();
-            escoger.setCurrentDirectory(new File("."));
-            if (escoger.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
-                File file = escoger.getSelectedFile();
-                
-                if (file.getName().endsWith("cpp")) {
-                    String doc = Resultado.getText();
-                    boolean successful = saveFile(file, doc);
-                    if (successful) {
-                        System.out.println("Archivo guardado con exito");
-                    }
-                }
-            }
-        } catch (Exception e) {
-            //
-        }
-    }//GEN-LAST:event_jBSaveActionPerformed
 
     private boolean saveFile(File file, String doc) {
         String message = null;
@@ -652,13 +496,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
     private javax.swing.JButton BotonAnalisis;
     private javax.swing.JButton BotonSintactico;
     private javax.swing.JTextArea Resultado;
-    private javax.swing.JButton btnArchivo;
-    private javax.swing.JButton jBAssembler;
-    private javax.swing.JButton jBEjecutable;
-    private javax.swing.JButton jBEjecutar;
-    private javax.swing.JButton jBIntermedio;
-    private javax.swing.JButton jBObjeto;
-    private javax.swing.JButton jBSave;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
