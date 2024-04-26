@@ -134,6 +134,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
         BotonSintactico.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         BotonSintactico.setText("Análisis Sintático");
+        BotonSintactico.setActionCommand("Análisis Sintático -");
         BotonSintactico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonSintacticoActionPerformed(evt);
