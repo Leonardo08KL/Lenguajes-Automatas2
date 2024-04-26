@@ -14,14 +14,17 @@ public class ConstructorArchivos {
 
     private String camino = "./src/Analizador/Lexico.flex";
     private String camino1 = "./src/Analizador/LexicoCup.flex";
+    private String camino2 = "./src/Analizador/LexerColor.flex";
+
     private String[] caminoS = {"-parser", "Sintaxis", "./src/Analizador/Sintaxis.cup"};
 
     public static void main(String[] args) throws Exception {
-        String camino= "./src/Analizador/Lexico.flex";
-        String camino1= "./src/Analizador/LexicoCup.flex";
-        String[] caminoS= {"-parser","Sintaxis","./src/Analizador/Sintaxis.cup"};
+        String camino = "./src/Analizador/Lexico.flex";
+        String camino1 = "./src/Analizador/LexicoCup.flex";
+        String camino2 = "./src/Analizador/LexerColor.flex";
+        String[] caminoS = {"-parser", "Sintaxis", "./src/Analizador/Sintaxis.cup"};
         generarArchivos(camino, camino1, caminoS);
-        
+
     }
 
     private static void generarArchivos(String camino, String camino1, String[] caminoS) throws IOException, Exception {
