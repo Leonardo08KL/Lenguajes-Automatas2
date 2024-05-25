@@ -1,6 +1,8 @@
+package Analizador;
+
 import compilerTools.TextColor;
 import java.awt.Color;
-
+import static Analizador.Tokens.*;
 %%
 %class LexerColor
 %type TextColor
@@ -84,7 +86,7 @@ L?\"(\\.|[^\\\"])*\" { return textColor(yychar, yylength(), new Color(146, 146, 
 ( "else" ) { return textColor(yychar, yylength(), new Color(146, 146, 146));}
 
 /* Ciclo repetitivo for */
-( "for" ) { return textColor(yychar, yylength(), new Color(0, 50, 255));}
+( "for" ) { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
 /* Condicional if */
 ( "if" ) { return textColor(yychar, yylength(), new Color(146, 146, 146));}

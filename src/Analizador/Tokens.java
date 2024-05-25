@@ -1,18 +1,11 @@
-
 package Analizador;
 
-/**
- *
- * @author Jhony Alejandro Caro
- * Junio 2022
- */
 public enum Tokens {
     Bool,
     BitAnd,
     BitOr,
     Break,
     Byte,
-    
     Case,
     Char,
     Cin,
@@ -25,7 +18,6 @@ public enum Tokens {
     Corchete_a,
     Corchete_c,
     Cout,
-    
     Default,
     Define,
     Decremento,
@@ -37,16 +29,13 @@ public enum Tokens {
     DobleMayor,
     DobleMenor,
     DosPuntos,
-    
     Else,
     Endl,
     ERROR,
     Et,
-    
     False,
     Float,
     For,
-    
     Identificador,
     If,
     Igual,
@@ -54,12 +43,10 @@ public enum Tokens {
     Include,
     Incremento,
     Iostream,
-    
     Linea,
     Llave_a,
     Llave_c,
     Long,
-    
     Main,
     MasIgual,
     MenosIgual,
@@ -71,24 +58,19 @@ public enum Tokens {
     ModuloIgual,
     Multiplicacion,
     MultiplicacionIgual,
-    
     Namespace,
     Negador,
     Numero,
     Numeral,
-    
     O_logico,
-    
     Parent_a,
     Parent_c,
     P_coma,
     Printf,
     Punto,
-    
     Register,
     Resta,
     Return,
-    
     Scanf,
     Short,
     Suma,
@@ -97,18 +79,12 @@ public enum Tokens {
     _String,
     Struct,
     Switch,
-    
     STRING_LITERAL,
-    
     Typedef,
     True,
-    
     Unsigned,
     Using,
-
     Void,
-    
     While,
-    
     Y_logico
 }

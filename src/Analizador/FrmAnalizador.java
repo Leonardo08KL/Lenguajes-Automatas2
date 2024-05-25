@@ -20,16 +20,28 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java_cup.runtime.Symbol;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -47,6 +59,13 @@ public class FrmAnalizador extends javax.swing.JFrame {
     private ArrayList<Production> identProd;
     private HashMap<String, String> identificadores;
     private boolean codeHasBeenCompiled = false;
+    DefaultMutableTreeNode nodoRaiz = null;
+    List<String> separarContenido = null;
+    DefaultTreeModel modeloArbol = null;
+
+    public static String etiquetas;
+    private ArrayList<String> etiquetasHtml;
+    private String etiqueta;
 
     public FrmAnalizador() {
         initComponents();
@@ -89,6 +108,12 @@ public class FrmAnalizador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Resultado = new javax.swing.JTextPane();
@@ -96,11 +121,26 @@ public class FrmAnalizador extends javax.swing.JFrame {
         txtAnalizarSin = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        BotonSintactico = new javax.swing.JButton();
-        BotonAnalisis = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        btnArchivoo = new javax.swing.JMenu();
+        jBSave = new javax.swing.JMenuItem();
+        btnArchivo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -108,7 +148,17 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        Resultado.setBackground(new java.awt.Color(55, 72, 79));
+        Resultado.setForeground(new java.awt.Color(255, 255, 255));
+        Resultado.setAlignmentX(0.1F);
+        Resultado.setCaretColor(new java.awt.Color(255, 255, 255));
+        Resultado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ResultadoKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(Resultado);
+        Resultado.setAlignmentX(0.1F);
 
         txtAnalizarSin.setColumns(20);
         txtAnalizarSin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -132,65 +182,85 @@ public class FrmAnalizador extends javax.swing.JFrame {
         tabla.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane4.setViewportView(tabla);
 
-        BotonSintactico.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        BotonSintactico.setText("Análisis Sintático");
-        BotonSintactico.setActionCommand("Análisis Sintático -");
-        BotonSintactico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonSintacticoActionPerformed(evt);
-            }
-        });
-
-        BotonAnalisis.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        BotonAnalisis.setText("Análisis Léxico");
-        BotonAnalisis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAnalisisActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonSintactico, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BotonAnalisis, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE))))
-                .addGap(35, 35, 35))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonAnalisis, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonSintactico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane4)
         );
 
-        jMenu1.setText("Archivo");
-        jMenuBar1.add(jMenu1);
+        btnArchivoo.setText("Archivo");
+        btnArchivoo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArchivooActionPerformed(evt);
+            }
+        });
+
+        jBSave.setText("Guardar");
+        jBSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSaveActionPerformed(evt);
+            }
+        });
+        btnArchivoo.add(jBSave);
+
+        btnArchivo.setText("Abrir");
+        btnArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArchivoActionPerformed(evt);
+            }
+        });
+        btnArchivoo.add(btnArchivo);
+
+        jMenuBar1.add(btnArchivoo);
 
         jMenu2.setText("Exit");
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Analizar");
+
+        jMenuItem3.setText("Analisis Lexico");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem3);
+
+        jMenuItem4.setText("Analisi Sintactico");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Ejecutar");
+
+        jMenuItem5.setText("Compilar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -672,7 +742,80 @@ public class FrmAnalizador extends javax.swing.JFrame {
         Functions.colorTextPane(textsColor, Resultado, new Color(40, 40, 40));
     }
 
-    private void BotonAnalisisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnalisisActionPerformed
+    private void btnArchivooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivooActionPerformed
+        // TODO add your handling code here:
+
+        JFileChooser directory = new JFileChooser();
+        directory.setCurrentDirectory(new File("."));
+        directory.setDialogTitle("DIRECTORIO");
+        directory.setAcceptAllFileFilterUsed(false);
+
+        if (directory.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            try {
+
+                File arc = new File(directory.getSelectedFile().getAbsolutePath());
+                String ST = new String(Files.readAllBytes(arc.toPath()));
+                Resultado.setText(ST);
+            } catch (FileNotFoundException ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            script.setPath(null);
+        }
+    }//GEN-LAST:event_btnArchivooActionPerformed
+
+    private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
+        // TODO add your handling code here:
+        JFileChooser directory = new JFileChooser();
+        directory.setCurrentDirectory(new File("."));
+        directory.setDialogTitle("DIRECTORIO");
+        directory.setAcceptAllFileFilterUsed(false);
+
+        if (directory.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            try {
+
+                File arc = new File(directory.getSelectedFile().getAbsolutePath());
+                String ST = new String(Files.readAllBytes(arc.toPath()));
+                Resultado.setText(ST);
+            } catch (FileNotFoundException ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                //Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            script.setPath(null);
+        }
+    }//GEN-LAST:event_btnArchivoActionPerformed
+
+    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+        try {
+
+            JFileChooser escoger = new JFileChooser();
+            escoger.setCurrentDirectory(new File("."));
+            if (escoger.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
+                File file = escoger.getSelectedFile();
+
+                if (file.getName().endsWith("cpp")) {
+                    String doc = Resultado.getText();
+                    boolean successful = saveFile(file, doc);
+                    if (successful) {
+                        System.out.println("Archivo guardado con exito");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            //
+        }
+    }//GEN-LAST:event_jBSaveActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
         try {
             analizarLexico();
 
@@ -680,9 +823,10 @@ public class FrmAnalizador extends javax.swing.JFrame {
             Logger.getLogger(FrmAnalizador.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_BotonAnalisisActionPerformed
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void BotonSintacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSintacticoActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
         String ST = Resultado.getText();
         Sintaxis s = new Sintaxis(new Analizador.LexicoCup(new StringReader(ST)));
 
@@ -695,7 +839,106 @@ public class FrmAnalizador extends javax.swing.JFrame {
             txtAnalizarSin.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
             txtAnalizarSin.setForeground(Color.red);
         }
-    }//GEN-LAST:event_BotonSintacticoActionPerformed
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        script.intermedio();
+        script.assambler();
+        script.objeto();
+        script.ejecutable();
+        script.start();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void ResultadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResultadoKeyReleased
+//        // TODO add your handling code here:
+//        try {
+//            poneColores();
+//
+//            if (Resultado.getText().equals(" ")) {
+//                nodoRaiz.removeAllChildren();
+//            }
+//
+//            if (evt.getKeyCode() == 10 || evt.getKeyCode() == 9 || evt.getKeyCode() == 46) {
+//                if (nodoRaiz != null) {
+//                    nodoRaiz.removeAllChildren();
+//                }
+//                obtenerContenido();
+//            }
+//        } catch (BadLocationException ex) {
+//            Logger.getLogger(Compiler.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_ResultadoKeyReleased
+
+    public void poneColores() throws BadLocationException {
+        actualizaColorTexto(Resultado, 0, Resultado.getText().length(), new Color(255, 255, 255));
+
+        llenaString(etiquetasHtml);
+        compilaPalabras(Resultado, new Color(144, 202, 249), etiquetas, true);//Compilar las palabras primarias
+        compilaPalabras(Resultado, Color.yellow, "\".*\"", false);
+    }
+
+    private void compilaPalabras(JTextPane text, Color color, String exp, boolean bold) {
+        Pattern patron = Pattern.compile(exp);
+
+        DefaultStyledDocument d = (DefaultStyledDocument) text.getDocument();
+        CharSequence texto = null;
+        try {
+            texto = d.getText(0, d.getLength());
+        } catch (BadLocationException ex) {
+        }
+        Matcher matcher = patron.matcher(texto);
+
+        while (matcher.find()) {
+            actualizaColorTexto(Resultado, matcher.start(), matcher.end() - matcher.start(), color);
+        }
+    }
+
+    private void obtenerContenido() {
+        try {
+            /*nodoRaiz = (DefaultMutableTreeNode) jTree1.getModel().getRoot();
+            modeloArbol = (DefaultTreeModel) jTree1.getModel();*/
+
+            separarContenido = null;
+            separarContenido = Arrays.asList(Resultado.getText().split("\\r?\\n"));
+
+            if (separarContenido.size() > 0) {
+                if (nodoRaiz != null) {
+
+                    for (int i = 1; i < separarContenido.size(); i++) {
+                        nodoRaiz.add(new DefaultMutableTreeNode(i + separarContenido.get(i)));
+                    }
+                }
+                if (nodoRaiz == null) {
+                    nodoRaiz = new DefaultMutableTreeNode(separarContenido.get(0));
+                }
+
+                modeloArbol.setRoot(nodoRaiz);
+                modeloArbol.reload(nodoRaiz);
+                /*jTree1.expandPath(new TreePath(nodoRaiz.getPath()));*/
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
+    private void actualizaColorTexto(JTextPane text, int i, int length, Color c) {
+        StyledDocument doc = text.getStyledDocument();
+        SimpleAttributeSet aset = new SimpleAttributeSet();
+        StyleConstants.setForeground(aset, c);
+        doc.setCharacterAttributes(i, length, aset, true);
+    }
+
+    public void llenaString(ArrayList<String> keys) {
+        StringBuilder buff = new StringBuilder("");
+        buff.append("(");
+        for (String keyword : keys) {
+            buff.append("\\b").append(keyword).append("\\b").append("|");
+        }
+        buff.deleteCharAt(buff.length() - 1);
+        buff.append(")");
+        etiquetas = buff.toString();
+    }
 
     private boolean saveFile(File file, String doc) {
         String message = null;
@@ -746,13 +989,24 @@ public class FrmAnalizador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAnalisis;
-    private javax.swing.JButton BotonSintactico;
     private javax.swing.JTextPane Resultado;
+    private javax.swing.JMenuItem btnArchivo;
+    private javax.swing.JMenu btnArchivoo;
+    private javax.swing.JMenuItem jBSave;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
